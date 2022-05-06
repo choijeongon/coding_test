@@ -181,14 +181,29 @@ print(count)
 # print("result: " + str(result))
 
 # 4. 숫자 카드 게임
-n, m = map(int, input().split())
+# n, m = map(int, input().split())
 
-minValue = 0
-min_max_value = 0
+# minValue = 0
+# min_max_value = 0
 
-for i in range(n):
-    data = list(map(int, input().split()))
-    minValue = min(data)
-    min_max_value = max(min_max_value, minValue)
+# for i in range(n):
+#     data = list(map(int, input().split()))
+#     minValue = min(data)
+#     min_max_value = max(min_max_value, minValue)
 
-print(min_max_value)
+# print(min_max_value)
+
+# 5. 1이 될 때까지
+n, k = map(int, input().split())
+count = 0
+
+while n>1:
+    if(n != 2):
+        if(n % k == 0):
+            n //= k
+            count += 1
+            continue
+    n -= 1
+    count +=1
+
+print(count)
