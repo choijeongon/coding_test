@@ -60,45 +60,38 @@ print(count)
 # 정답 코드
 
 # 방송하고자 하는 주의 목록
-states_needed = set(["mt", "wa", "or", "id", "nv", "ut", "ca", "az"])
+# states_needed = set(["mt", "wa", "or", "id", "nv", "ut", "ca", "az"])
 
-# 방송국 목록
-stations = {}
-stations["kone"] = set(["id", "nv", "ut"])
-stations["ktwo"] = set(["wa", "id", "mt"])
-stations["kthree"] = set(["or", "nv", "ca"])
-stations["kfour"] = set(["nv", "ut"])
-stations["kfive"] = set(["ca", "az"])
+# # 방송국 목록
+# stations = {}
+# stations["kone"] = set(["id", "nv", "ut"])
+# stations["ktwo"] = set(["wa", "id", "mt"])
+# stations["kthree"] = set(["or", "nv", "ca"])
+# stations["kfour"] = set(["nv", "ut"])
+# stations["kfive"] = set(["ca", "az"])
 
-# 내가 방문할 방송국의 목록
-final_stations = set()
+# # 내가 방문할 방송국의 목록
+# final_stations = set()
 
-while states_needed:
-    # 1. 아직 방송이 되지 않는 주 중에서 가장 많은 주를 커버하고 있는 방송국을 고른다.
-    #  이 방송국을 best_station 이라고 부른다.
-    best_station = None
-    # 아직 방송되지 않은 주 중에서 해당 방송국이 커버하는 주의 집합
-    states_covered = set()
+# while states_needed:
+#     # 1. 아직 방송이 되지 않는 주 중에서 가장 많은 주를 커버하고 있는 방송국을 고른다.
+#     #  이 방송국을 best_station 이라고 부른다.
+#     best_station = None
+#     # 아직 방송되지 않은 주 중에서 해당 방송국이 커버하는 주의 집합
+#     states_covered = set()
 
-    for station, states_for_station in stations.items():
-    # covered는 아직 방송되지 않는 주 중에서 현재 고려하고 있는 방송국이 커버하는 주의 집합
-        covered = states_needed & states_for_station
+#     for station, states_for_station in stations.items():
+#     # covered는 아직 방송되지 않는 주 중에서 현재 고려하고 있는 방송국이 커버하는 주의 집합
+#         covered = states_needed & states_for_station
 
-        if len(covered) > len(states_covered):
-            best_station = station
-            states_covered = covered
-    states_needed -= states_covered
-    final_stations.add(best_station)
+#         if len(covered) > len(states_covered):
+#             best_station = station
+#             states_covered = covered
+#     states_needed -= states_covered
+#     final_stations.add(best_station)
 
-print(final_stations)
+# print(final_stations)
 
-
-    # print("station: " + station)
-    # for state in states_for_station:
-    #     print("states_for_station: "+ state)
-
-    # for state in covered:
-    #     print("covered: state" + state)
 
 # 방송이 필요한 도시
 # city_needed = set(["광명","부천","공주","김포","천안","안동","구미","경주"])
@@ -149,3 +142,41 @@ print(final_stations)
  
 # print(final_stations)
 # {'인천', '세종', '서울', '부산'}
+
+
+# 3. 큰 수의 법칙
+length, count, continuous_limit = map(int, input().split())
+
+data = list(map(int, input().split()))
+
+print("length: " + str(length))
+print("count: " + str(count))
+print("continuous_limit: " + str(continuous_limit))
+print(data)
+
+max_value = 0
+result = 0
+saved_continuous_limit = continuous_limit
+
+data.sort(reverse=True)
+second_value = data[1]
+# print(data)
+# print(data[1])
+
+for value in data:
+    max_value = max(max_value, value)
+
+# print(str(max_value))
+
+while count > 0:
+    if(continuous_limit == 0):
+        result += second_value
+        continuous_limit = saved_continuous_limit
+        count -= 1
+        continue
+    result += max_value
+    count -= 1
+    continuous_limit -= 1
+
+print("result: " + str(result))
+
