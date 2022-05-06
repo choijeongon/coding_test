@@ -145,38 +145,50 @@ print(count)
 
 
 # 3. 큰 수의 법칙
-length, count, continuous_limit = map(int, input().split())
+# length, count, continuous_limit = map(int, input().split())
 
-data = list(map(int, input().split()))
+# data = list(map(int, input().split()))
 
-print("length: " + str(length))
-print("count: " + str(count))
-print("continuous_limit: " + str(continuous_limit))
-print(data)
-
-max_value = 0
-result = 0
-saved_continuous_limit = continuous_limit
-
-data.sort(reverse=True)
-second_value = data[1]
+# print("length: " + str(length))
+# print("count: " + str(count))
+# print("continuous_limit: " + str(continuous_limit))
 # print(data)
-# print(data[1])
 
-for value in data:
-    max_value = max(max_value, value)
+# max_value = 0
+# result = 0
+# saved_continuous_limit = continuous_limit
 
-# print(str(max_value))
+# data.sort(reverse=True)
+# second_value = data[1]
+# # print(data)
+# # print(data[1])
 
-while count > 0:
-    if(continuous_limit == 0):
-        result += second_value
-        continuous_limit = saved_continuous_limit
-        count -= 1
-        continue
-    result += max_value
-    count -= 1
-    continuous_limit -= 1
+# for value in data:
+#     max_value = max(max_value, value)
 
-print("result: " + str(result))
+# # print(str(max_value))
 
+# while count > 0:
+#     if(continuous_limit == 0):
+#         result += second_value
+#         continuous_limit = saved_continuous_limit
+#         count -= 1
+#         continue
+#     result += max_value
+#     count -= 1
+#     continuous_limit -= 1
+
+# print("result: " + str(result))
+
+# 4. 숫자 카드 게임
+n, m = map(int, input().split())
+
+minValue = 0
+min_max_value = 0
+
+for i in range(n):
+    data = list(map(int, input().split()))
+    minValue = min(data)
+    min_max_value = max(min_max_value, minValue)
+
+print(min_max_value)
