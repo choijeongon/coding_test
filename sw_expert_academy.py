@@ -112,17 +112,27 @@
 # print(t)
 
 # 8. 알파벳을 숫자로 변환
-t = input()
+# t = input()
 
-letter_list = list("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
-number_li = list(range(1, 27))
+# letter_list = list("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+# number_li = list(range(1, 27))
 
-string_list = ''
+# string_list = ''
 
-for value in list(t):
-    for check in letter_list:
-        if(check == value):
-            string_list += str(number_li[letter_list.index(check)])
-            string_list += ' '
+# for value in list(t):
+#     for check in letter_list:
+#         if(check == value):
+#             string_list += str(number_li[letter_list.index(check)])
+#             string_list += ' '
 
-print(string_list)
+# print(string_list)
+
+# 9. 스탬프 찍기
+stemp = int(input())
+
+letter = ''
+
+for i in range(stemp):
+    letter += "#"
+
+print(letter)
