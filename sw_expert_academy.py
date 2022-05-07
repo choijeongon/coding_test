@@ -85,10 +85,21 @@
 #     count += 1
 
 # 5. 중간값 구하기
-t = input()
+# t = input()
 
-data = list(map(int, input().split()))
+# data = list(map(int, input().split()))
 
-data = sorted(data)
+# data = sorted(data)
 
-print(data[len(data)//2])
+# print(data[len(data)//2])
+
+# 6. 거꾸로 출력해 보아요
+# val = int(input())
+
+# li = ''
+
+# for i in range(val, -1, -1):
+#     li += str(i)
+#     li += ' '
+
+# print(li)
