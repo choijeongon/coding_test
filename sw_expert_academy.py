@@ -189,14 +189,52 @@
 # print(result)
 
 # 12. 서랍의 비밀번호
-p, k = list(map(int, input().split()))
+# p, k = list(map(int, input().split()))
+
+# count = 1
+
+# for i in range(p):
+#     if k == p:
+#         break
+#     count += 1
+#     k += 1
+
+# print(count)
+
+# 13. N줄덧셈
+# n = int(input())
+
+# count = 0
+
+# for index in range(1, n+1):
+#     count += index
+
+# print(count)
+
+# 14. 초심자의 회문 검사
+t = input()
 
 count = 1
 
-for i in range(p):
-    if k == p:
-        break
-    count += 1
-    k += 1
+dic = {}
 
-print(count)
+for index in range(int(t)):
+    data = input()
+
+    result = ''
+
+    temp = ''
+
+    for i in data:
+        temp = i + temp
+    
+    if data == temp:
+        result = '1'
+    else:
+        result = '0'
+
+    dic[index+1] = result
+
+while count <= int(t):
+    print('#' + str(count) + " " + str(dic[count]))
+    count += 1
