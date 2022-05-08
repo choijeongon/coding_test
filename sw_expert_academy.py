@@ -212,6 +212,34 @@
 # print(count)
 
 # 14. 초심자의 회문 검사
+# t = input()
+
+# count = 1
+
+# dic = {}
+
+# for index in range(int(t)):
+#     data = input()
+
+#     result = ''
+
+#     temp = ''
+
+#     for i in data:
+#         temp = i + temp
+    
+#     if data == temp:
+#         result = '1'
+#     else:
+#         result = '0'
+
+#     dic[index+1] = result
+
+# while count <= int(t):
+#     print('#' + str(count) + " " + str(dic[count]))
+#     count += 1
+
+# 15. 지그재그 숫자
 t = input()
 
 count = 1
@@ -219,19 +247,16 @@ count = 1
 dic = {}
 
 for index in range(int(t)):
-    data = input()
+    data = int(input())
 
-    result = ''
+    result = 0
 
-    temp = ''
-
-    for i in data:
-        temp = i + temp
-    
-    if data == temp:
-        result = '1'
-    else:
-        result = '0'
+    for i in range(data):
+        value = i+1
+        if value % 2 == 0:
+            result -= value
+        else:
+            result += value
 
     dic[index+1] = result
 
