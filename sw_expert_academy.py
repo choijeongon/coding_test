@@ -177,13 +177,26 @@
 #     count += 1
 
 # 11. 약수 출력
-n = int(input())
+# n = int(input())
 
-result = ''
+# result = ''
 
-for i in range(n):
-    if n % (i+1) == 0:
-        result += str(i+1)
-        result += ' '
+# for i in range(n):
+#     if n % (i+1) == 0:
+#         result += str(i+1)
+#         result += ' '
 
-print(result)
+# print(result)
+
+# 12. 서랍의 비밀번호
+p, k = list(map(int, input().split()))
+
+count = 1
+
+for i in range(p):
+    if k == p:
+        break
+    count += 1
+    k += 1
+
+print(count)
