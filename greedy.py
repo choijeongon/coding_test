@@ -36,18 +36,18 @@ print(count)
 '''
 
 # 정답 코드
-'''
-n = 4360
-count = 0
 
-coin_type = [500, 100, 50, 10]
+# n = 4360
+# count = 0
 
-for coin in coin_type:
-    count += n // coin
-    n %= coin
+# coin_type = [500, 100, 50, 10]
 
-print(count)
-'''
+# for coin in coin_type:
+#     count += n // coin
+#     n %= coin
+
+# print(count)
+
 
 # 2. 집합 커버링 문제
 '''
@@ -80,12 +80,14 @@ print(count)
 #     # 아직 방송되지 않은 주 중에서 해당 방송국이 커버하는 주의 집합
 #     states_covered = set()
 
+#     # station(key), states_for_station(value)
 #     for station, states_for_station in stations.items():
 #     # covered는 아직 방송되지 않는 주 중에서 현재 고려하고 있는 방송국이 커버하는 주의 집합
 #         covered = states_needed & states_for_station
 
+#         # 이 방송국이 현재의 best_sation보다 더 많은 도시를 커버하는지 확인
 #         if len(covered) > len(states_covered):
-#             best_station = station
+#             best_station = station # 커버한다면 이 방송국이 새로운 best_station
 #             states_covered = covered
 #     states_needed -= states_covered
 #     final_stations.add(best_station)
@@ -194,16 +196,16 @@ print(count)
 # print(min_max_value)
 
 # 5. 1이 될 때까지
-n, k = map(int, input().split())
-count = 0
+# n, k = map(int, input().split())
+# count = 0
 
-while n>1:
-    if(n != 2):
-        if(n % k == 0):
-            n //= k
-            count += 1
-            continue
-    n -= 1
-    count +=1
+# while n>1:
+#     if(n != 2):
+#         if(n % k == 0):
+#             n //= k
+#             count += 1
+#             continue
+#     n -= 1
+#     count +=1
 
-print(count)
+# print(count)
