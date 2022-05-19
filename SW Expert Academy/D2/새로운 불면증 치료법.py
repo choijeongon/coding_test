@@ -1,18 +1,27 @@
 
-# from itertools import count
+T = int(input())
 
+result_map = {}
 
-# T = int(input())
+for index in range(T):
+    N = int(input())
 
-# result_map = {}
+    number_list = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 
-# for i in range(T):
-#     N = int(input())
+    count = 1
 
-#     li = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-#     count = 1
+    while number_list:
+        number = N * count
+        # print(number)
+        number_string = str(number)
 
-#     while li:    
-#         value = count 
+        for value in number_string:
+            if value in number_list:
+                number_list.remove(value)
+        count += 1
 
-#         count += 1
+    result_map[index+1] = (count-1) * N
+
+for index in range(T):
+    print('#' +str(index+1) + ' ' + str(result_map[index+1]))
+
