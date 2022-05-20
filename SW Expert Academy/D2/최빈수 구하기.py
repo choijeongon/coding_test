@@ -16,6 +16,38 @@
 [출력]
 #부호와 함께 테스트 케이스의 번호를 출력하고, 공백 문자 후 테스트 케이스에 대한 답을 출력한다.
 '''
+# import collections
+
+# T = int(input())
+
+# result_map = {}
+
+# for i in range(T):
+#     test_case_number = int(input())
+#     data_list = list(map(int, input().split()))
+
+#     li = collections.Counter(data_list).most_common()
+#     # print(collections.Counter(data_list).most_common())
+
+#     if li[0][1] == li[1][1]:
+#         most_value = li[0][1]
+#         most_value_list = set()
+#         most_value_list.add(li[0][0])
+#         for i in li:
+#             if most_value == i[1]:
+#                 most_value_list.add(i[0])
+#         max_value = 0
+#         for index in most_value_list:
+#             max_value = max(max_value, index)
+        
+#         result_map[test_case_number] = max_value
+#     else:
+#         result_map[test_case_number] = collections.Counter(data_list).most_common(1)[0][0]
+
+# for i in range(T):
+#     print("#" + str(i+1) + " " + str(result_map[i+1]))
+
+
 import collections
 
 T = int(input())
@@ -23,26 +55,30 @@ T = int(input())
 result_map = {}
 
 for i in range(T):
-    test_case_number = int(input())
+    number = int(input())
     data_list = list(map(int, input().split()))
+    counter_list = collections.Counter(data_list).most_common()
 
-    li = collections.Counter(data_list).most_common()
-    # print(collections.Counter(data_list).most_common())
+    # 가장 많이 나온 빈도수
+    max_count_value = counter_list[0][1]
 
-    if li[0][1] == li[1][1]:
-        most_value = li[0][1]
-        most_value_list = set()
-        most_value_list.add(li[0][0])
-        for i in li:
-            if most_value == i[1]:
-                most_value_list.add(i[0])
-        max_value = 0
-        for index in most_value_list:
-            max_value = max(max_value, index)
-        
-        result_map[test_case_number] = max_value
-    else:
-        result_map[test_case_number] = collections.Counter(data_list).most_common(1)[0][0]
+    max_value_list = []
+
+    for index in range(len(counter_list)):
+        if counter_list[index][1] == max_count_value:
+            max_value_list.append(counter_list[index][0])
+
+    big_max_value = max(max_value_list)
+
+    result_map[number] = big_max_value
 
 for i in range(T):
     print("#" + str(i+1) + " " + str(result_map[i+1]))
+
+
+
+
+
+
+
+
