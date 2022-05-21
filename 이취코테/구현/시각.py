@@ -1,15 +1,24 @@
 
+# N = int(input())
 
-from itertools import count
+# count = 0
 
+# for i in range(N + 1):
+#     for j in range(60):
+#         for k in range(60):
+#             if '3' in str(i) + str(j) + str(k):
+#                 count +=1
 
-N = int(input())
+# print(count)
+
+h = int(input())
 
 count = 0
-for i in range(N + 1):
+
+for i in range(h+1):
     for j in range(60):
         for k in range(60):
             if '3' in str(i) + str(j) + str(k):
-                count +=1
+                count += 1
 
 print(count)
