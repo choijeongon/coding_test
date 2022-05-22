@@ -8,3 +8,6 @@ reversed_b = [[0] * N for _ in range(N)]
 for i in range(N):
     for j in range(N):
         reversed_b[j][N-1-i] = board[i][j]
+
+print(board)
+print(reversed_b)
