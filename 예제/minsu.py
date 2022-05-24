@@ -242,3 +242,6 @@ print(li)
 # a.sort(reverse=True)
 # print(a)
 '''
+
+# string 뒤집기
+# string = string[::-1]
