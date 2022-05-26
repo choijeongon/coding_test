@@ -1,3 +1,4 @@
+#1
 # t = input()
 
 # letter_list = list("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
@@ -12,13 +13,23 @@
 #             string_list += ' '
 
 # print(string_list)
+#2
+# letter = input()
 
-letter = input()
+# li = list("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
 
-li = list("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+# input_list = list(letter)
 
-input_list = list(letter)
+# for val in input_list:
+#     print(li.index(val)+ 1, end=' ')
 
-for val in input_list:
-    print(li.index(val)+ 1, end=' ')
 
+#3
+letter = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+input_value = input()
+
+for value in input_value:
+    for index in range(len(letter)):
+        if value == letter[index]:
+            print(index+1, end= ' ')
