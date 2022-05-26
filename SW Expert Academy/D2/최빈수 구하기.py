@@ -16,6 +16,8 @@
 [출력]
 #부호와 함께 테스트 케이스의 번호를 출력하고, 공백 문자 후 테스트 케이스에 대한 답을 출력한다.
 '''
+
+#1
 # import collections
 
 # T = int(input())
@@ -47,34 +49,62 @@
 # for i in range(T):
 #     print("#" + str(i+1) + " " + str(result_map[i+1]))
 
+#2
+# import collections
 
+# T = int(input())
+
+# result_map = {}
+
+# for i in range(T):
+#     number = int(input())
+#     data_list = list(map(int, input().split()))
+#     counter_list = collections.Counter(data_list).most_common()
+
+#     # 가장 많이 나온 빈도수
+#     max_count_value = counter_list[0][1]
+
+#     max_value_list = []
+
+#     for index in range(len(counter_list)):
+#         if counter_list[index][1] == max_count_value:
+#             max_value_list.append(counter_list[index][0])
+
+#     big_max_value = max(max_value_list)
+
+#     result_map[number] = big_max_value
+
+# for i in range(T):
+#     print("#" + str(i+1) + " " + str(result_map[i+1]))
+
+#3
 import collections
 
 T = int(input())
 
-result_map = {}
+for testcase in range(1, T+1):
+    testcase_number = int(input())
 
-for i in range(T):
-    number = int(input())
     data_list = list(map(int, input().split()))
+
     counter_list = collections.Counter(data_list).most_common()
 
-    # 가장 많이 나온 빈도수
-    max_count_value = counter_list[0][1]
+    max_value = 0
 
-    max_value_list = []
 
-    for index in range(len(counter_list)):
-        if counter_list[index][1] == max_count_value:
-            max_value_list.append(counter_list[index][0])
+    #최빈수가 여러개임
+    if counter_list[0][1] == counter_list[1][1]:
+        max_value = counter_list[0][0]
 
-    big_max_value = max(max_value_list)
+        for index in range(1, len(counter_list)):
+            if counter_list[0][1] == counter_list[index][1]:
+                max_value = max(max_value, counter_list[index][0])
 
-    result_map[number] = big_max_value
+    #최빈수가 하나임
+    elif counter_list[0][1] > counter_list[1][1]:
+        max_value = counter_list[0][0]
 
-for i in range(T):
-    print("#" + str(i+1) + " " + str(result_map[i+1]))
-
+    print("#{} {}".format(testcase, max_value))
 
 
 
