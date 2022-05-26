@@ -49,25 +49,21 @@ for i in range(T):
 
     if int(month) < 1 or int(month) > 12:
         result_map[i+1] = '-1'
-        print("year Error")
         continue
 
     if int(month) == 1 or int(month) == 3 or int(month) == 5 or int(month) == 7 or int(month) == 8 or int(month) == 10 or int(month) == 12:
         if int(day) < 1 or int(day) > 31:
             result_map[i+1] = '-1'
-            print("31 Error")
             continue
     
     if int(month) == 4 or int(month) == 6 or int(month) == 9 or int(month) == 11:
         if int(day) < 1 or int(day) > 30:
             result_map[i+1] = '-1'
-            print("30 Error")
             continue
     
     if int(month) == 2:
         if int(day) < 1 or int(day) > 28:
             result_map[i+1] = '-1'
-            print("28 Error")
             continue
     
     result_map[i+1] = year + '/' + month + '/' + day
