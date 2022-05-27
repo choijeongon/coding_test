@@ -1,33 +1,34 @@
 
-T = int(input())
+#1
+# T = int(input())
 
-result_map = {}
+# result_map = {}
 
-for index in range(1, T+1):
-    N, M = map(int, input().split())
-    arr = []
-    for i in range(N):
-        temp = list(map(int, input().split()))
-        arr.append(temp)
+# for index in range(1, T+1):
+#     N, M = map(int, input().split())
+#     arr = []
+#     for i in range(N):
+#         temp = list(map(int, input().split()))
+#         arr.append(temp)
     
-    n = M-1
-    max_v = 0
+#     n = M-1
+#     max_v = 0
 
-    for i in range(N-n):
-        for j in range(N-n):
-            sum_v = 0
+#     for i in range(N-n):
+#         for j in range(N-n):
+#             sum_v = 0
 
-            for di in range(M):
-                for dj in range(M):
-                    sum_v += arr[i+di][j+dj]
+#             for di in range(M):
+#                 for dj in range(M):
+#                     sum_v += arr[i+di][j+dj]
             
-            if sum_v > max_v:
-                max_v = sum_v
+#             if sum_v > max_v:
+#                 max_v = sum_v
     
-    result_map[index] = max_v
+#     result_map[index] = max_v
 
-for index in range(1, T+1):
-    print("#" + str(index) +" " +str(result_map[index]))
+# for index in range(1, T+1):
+#     print("#" + str(index) +" " +str(result_map[index]))
 
 
 # 민수형 풀이
@@ -47,3 +48,26 @@ for index in range(1, T+1):
 #         for j in range(abs(M-N)+1):
 #             store.append(kill_fly(i, j, M))
 #     print(f'#{test_case} {max(store)}')
+
+
+#3
+T = int(input())
+
+for testcase in range(1, T+1):
+    N, M = map(int, input().split())
+
+    board = [list(map(int, input().split())) for _ in range(N)]
+
+    max_addall = 0
+
+    for i in range(N-M+1):
+        for j in range(N-M+1):
+            addall = 0
+
+            for mi in range(M):
+                for mj in range(M):
+                    addall += board[i+mi][j+mj]
+
+            max_addall = max(max_addall, addall)
+
+    print("#{} {}".format(testcase, max_addall))
