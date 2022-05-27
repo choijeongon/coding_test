@@ -40,7 +40,7 @@ for testcase in range(1, T+1):
             if j == 0 or j == i:
                 board[i][j] = 1
             else:
-                board[i][j] = board[i-1][j] + board[i-1][j-1]\
+                board[i][j] = board[i-1][j] + board[i-1][j-1]
 
     print("#" + str(testcase))
     for index in range(len(board)):
