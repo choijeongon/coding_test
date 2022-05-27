@@ -1,3 +1,4 @@
+#1
 # t = input()
 
 # count = 1
@@ -25,22 +26,38 @@
 #     print('#' + str(count) + " " + str(dic[count]))
 #     count += 1
 
+#2
+# T = int(input())
+
+# result_map = {}
+
+# for i in range(T):
+#     data = input()
+
+#     temp = ''
+
+#     for index in range(len(data)-1, -1, -1):
+#         temp += data[index]
+    
+#     if data == temp:
+#         result_map[i+1] = '1'
+#     else:
+#         result_map[i+1] = '0'
+
+# for i in range(T):
+#     print("#" + str(i+1) + " " + result_map[i+1])
+
+#3
 T = int(input())
 
-result_map = {}
-
-for i in range(T):
+for testcase in range(1, T+1):
     data = input()
+    reversed_data = data[::-1]
+    result = 0
 
-    temp = ''
-
-    for index in range(len(data)-1, -1, -1):
-        temp += data[index]
-    
-    if data == temp:
-        result_map[i+1] = '1'
+    if data == reversed_data:
+        result = 1
     else:
-        result_map[i+1] = '0'
+        result = 0
 
-for i in range(T):
-    print("#" + str(i+1) + " " + result_map[i+1])
+    print("#{} {}".format(testcase, result))
