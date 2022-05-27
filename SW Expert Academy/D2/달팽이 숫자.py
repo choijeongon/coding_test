@@ -1,4 +1,5 @@
 
+#1
 # T = int(input())
 
 # result_map = {}
@@ -42,43 +43,82 @@
 #     for value in result_map[index+1]:
 #         print(*value)
 
+#2
+# T = int(input())
+
+# result_map = {}
+
+# direction_column = [0, 1, 0, -1]
+# direction_row = [1, 0, -1, 0]
+
+# for i in range(T):
+#     N = int(input())
+
+#     board = [[0 for col in range(N)] for ro in range(N)]
+
+#     column = 0
+#     row = 0
+
+#     # 우, 하, 좌, 상 순
+#     direction = 0
+
+#     for value in range(1, N*N +1):
+#         board[column][row] = value
+#         column += direction_column[direction]
+#         row += direction_row[direction]
+
+#         if column < 0 or row < 0 or column >= N or row >= N or board[column][row] != 0:
+#             column -= direction_column[direction]
+#             row -= direction_row[direction]
+
+#             direction = (direction + 1) % 4
+
+#             column += direction_column[direction]
+#             row += direction_row[direction]
+
+#     result_map[N] = board
+
+# for i in range(T):
+#     print("#" + str(i+1))
+#     for val in result_map[i+1]:
+#         print(*val)
+
+#3
+# 오, 아, 왼, 위
+direct_x = [0, 1, 0, -1]
+direct_y = [1, 0, -1, 0]
 
 T = int(input())
 
-result_map = {}
+for testcase in range(1, T+1):
+    testcase_number = int(input())
 
-direction_column = [0, 1, 0, -1]
-direction_row = [1, 0, -1, 0]
+    board = [[0] * testcase_number for _ in range(testcase_number)]
 
-for i in range(T):
-    N = int(input())
+    direct = 0
 
-    board = [[0 for col in range(N)] for ro in range(N)]
+    current_x = 0
+    current_y = 0
 
-    column = 0
-    row = 0
+    for value in range(1, testcase_number*testcase_number +1):
+        board[current_x][current_y] = value
+        current_x += direct_x[direct]
+        current_y += direct_y[direct]
 
-    # 우, 하, 좌, 상 순
-    direction = 0
+        if current_x >= testcase_number or current_y >= testcase_number or board[current_x][current_y] != 0:
+            current_x -= direct_x[direct]
+            current_y -= direct_y[direct]
 
-    for value in range(1, N*N +1):
-        board[column][row] = value
-        column += direction_column[direction]
-        row += direction_row[direction]
+            direct = (direct+1) % 4
 
-        if column < 0 or row < 0 or column >= N or row >= N or board[column][row] != 0:
-            column -= direction_column[direction]
-            row -= direction_row[direction]
+            current_x += direct_x[direct]
+            current_y += direct_y[direct]
 
-            direction = (direction + 1) % 4
 
-            column += direction_column[direction]
-            row += direction_row[direction]
+    for index in range(testcase_number):
+        print(*board[index], end = ' ')
+        print()
 
-    result_map[N] = board
 
-for i in range(T):
-    print("#" + str(i+1))
-    for val in result_map[i+1]:
-        print(*val)
+
 
