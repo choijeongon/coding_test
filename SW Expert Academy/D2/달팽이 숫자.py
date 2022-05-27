@@ -114,7 +114,7 @@ for testcase in range(1, T+1):
             current_x += direct_x[direct]
             current_y += direct_y[direct]
 
-
+    print("#" + str(testcase))
     for index in range(testcase_number):
         print(*board[index], end = ' ')
         print()
