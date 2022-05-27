@@ -1,19 +1,37 @@
+#1
+# T = int(input())
 
+# result_map = {}
+
+# for index in range(1, T+1):
+#     data = input()
+
+#     mady = ''
+
+#     for i in range(1, len(data) + 1):
+#         if data[:i] == data[i:i*2]:
+#             mady = data[:i]
+#             break
+
+#     result_map[index] = len(mady)
+
+# for index in range(1, T+1):
+#     print("#" + str(index) + " " + str(result_map[index]))
+
+#2
 T = int(input())
 
-result_map = {}
+for testcase in range(1, T+1):
+    input_data = input()
 
-for index in range(1, T+1):
-    data = input()
+    result = ''
 
-    mady = ''
+    for index in range(1, 31):
+        a = input_data[:index]
+        b = input_data[index:index+len(a)]
 
-    for i in range(1, len(data) + 1):
-        if data[:i] == data[i:i*2]:
-            mady = data[:i]
+        if a == b:
+            result = a
             break
 
-    result_map[index] = len(mady)
-
-for index in range(1, T+1):
-    print("#" + str(index) + " " + str(result_map[index]))
+    print("#{} {}".format(testcase, len(result)))
