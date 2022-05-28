@@ -12,3 +12,16 @@ def knapsack(W, wt, val, n): # W: 배낭의 무게한도, wt: 각 보석의 무
             else: 
                 K[i][w] = K[i-1][w] 
     return K[n][W]
+
+def dp(W, N, weight_list, value_list):
+    K = [[0] * (W+1) for _ in range(N+1)]
+    
+    for index in range(N+1):
+        for weight in range(W+1):
+            if index == 0 or weight == 0:
+                K[index][weight] = 0
+            elif weight_list[index - 1] <= W:
+                K[index][weight] = max(value_list[index-1] + K[index-1][weight - weight_list[index-1]], K[index-1][weight])
+            else:
+                K[index][weight] = K[index-1][weight]
+    return K[N][W]
