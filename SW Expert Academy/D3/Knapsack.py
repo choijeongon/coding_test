@@ -1,6 +1,6 @@
 
 def knapsack(W, wt, val, n): # W: 배낭의 무게한도, wt: 각 보석의 무게, val: 각 보석의 가격, n: 보석의 수
-    K = [[0 for x in range(W+1)] for x in range(n+1)] # DP를 위한 2차원 리스트 초기화    
+    K = [[0] * (W+1) for x in range(n+1)] # DP를 위한 2차원 리스트 초기화    
     for i in range(n+1): 
         for w in range(W+1): # 각 칸을 돌면서            
             if i==0 or w==0: # 0번째 행/열은 0으로 세팅                
