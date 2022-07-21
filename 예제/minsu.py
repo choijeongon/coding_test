@@ -245,3 +245,4 @@ print(li)
 
 # string 뒤집기
 # string = string[::-1]
+# test
