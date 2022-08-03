@@ -50,7 +50,7 @@ public class bj_2468 {
 //			System.out.println(Arrays.toString(board[i]));
 //		}
 		
-		int answer= 0;
+		int answer= 1;
 		
 		//height = 높이
 		for (int height = 1; height <= 100; height++) {
