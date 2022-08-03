@@ -70,7 +70,7 @@ public class bj_2468 {
 				}
 			}
 			
-			int result = 0;
+			int result = 1;
 			//영역 찾기
 			for (int i = 0; i < test_board.length; i++) {
 				for (int j = 0; j < test_board.length; j++) {
