@@ -6,6 +6,21 @@ import java.io.InputStreamReader;
 import java.util.Stack;
 
 public class swea_1218 {
+	static char op(char ch) {
+		switch (ch) {
+		case '(':
+			return ')';
+		case '{':
+			return '}';
+		case '[':
+			return ']';
+		case '<':
+			return '>';
+		default:
+			return '0';
+		}
+	}
+	
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
