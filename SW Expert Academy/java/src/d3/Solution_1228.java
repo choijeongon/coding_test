@@ -3,67 +3,40 @@ package d3;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.LinkedList;
-import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class Solution_1228 {
 	public static void main(String[] args) throws NumberFormatException, IOException {
-		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		
 		for (int tc = 1; tc <= 10; tc++) {
+			LinkedList<Integer> list = new LinkedList<>();
 			int N = Integer.parseInt(br.readLine());
-			
-			//0 ~ 999999사이 암호 갯수
-			String[] originalList = new String[N];
-			
 			StringTokenizer st = new StringTokenizer(br.readLine());
-			
-			for (int i = 0; i < originalList.length; i++) {
-				originalList[i] = st.nextToken();
+			for (int n = 0; n < N; n++) {
+				list.add(Integer.parseInt(st.nextToken()));
 			}
 			
-			int orderNumber = Integer.parseInt(br.readLine());
+			int len = Integer.parseInt(br.readLine());
 			
 			st = new StringTokenizer(br.readLine());
 			
-			Queue queue = new LinkedList();
+			for (int i = 0; i < len; i++) {
+				String ch = st.nextToken(); // I
+				int idx = Integer.parseInt(st.nextToken()); // 삽입 위치
+				int count = Integer.parseInt(st.nextToken()); // 삽입 갯수
+				
+				for (int c = 0; c < count; c++) {
+					int addNum = Integer.parseInt(st.nextToken());
+					list.add(idx+c, addNum);
+				}
+			} //len번의 삽입 명령 수행 이후
 			
-//			System.out.println("N: " + N);
-//			System.out.println(Arrays.toString(originalList));
-//			System.out.println("orderNumber: " + orderNumber);
-			
-			for (int i = 0; i < orderNumber; i++) {
-				char order = st.nextToken().charAt(0);
-				int start_location = Integer.parseInt(st.nextToken());
-				int insertNumber = Integer.parseInt(st.nextToken());
-				
-				String[] insertList = new String[insertNumber];
-				
-				for (int j = 0; j < insertList.length; j++) {
-					insertList[j] = st.nextToken();
-				}
-				
-//				System.out.println("order: " + order);
-//				System.out.println("start_location: " + start_location);
-//				System.out.println("insertNumber: " + insertNumber);
-//				System.out.println(Arrays.toString(insertList));
-				
-				//처음 파트 삽입
-				for (int j = 0; j < start_location; j++) {
-					queue.add(originalList[j]);
-				}
-				
-				//중간 삽입
-				
-				//마지막 파트 삽입
-				for (int j = start_location; j < originalList.length; j++) {
-					queue.add(originalList[j]);
-				}
+			System.out.print("#"+tc+ " ");
+			for (int i = 0; i < 10; i++) {
+				System.out.print(list.get(i) + " ");
 			}
-			
+			System.out.println();
 		}
 	}
 }
