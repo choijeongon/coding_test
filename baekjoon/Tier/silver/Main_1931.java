@@ -8,67 +8,47 @@ import java.util.Comparator;
 import java.util.StringTokenizer;
 
 public class Main_1931 {
-	public static void main(String[] args) throws NumberFormatException, IOException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    public static void main(String[] args) throws NumberFormatException, IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-		int N = Integer.parseInt(br.readLine());
+        int N = Integer.parseInt(br.readLine());
 
-		int[][] meetingList = new int[N][];
-		
-		StringTokenizer st;
+        int[][] meetingList = new int[N][];
 
-		for (int i = 0; i < meetingList.length; i++) {
-			st = new StringTokenizer(br.readLine());
-			int startTime = Integer.parseInt(st.nextToken());
-			int lastTime = Integer.parseInt(st.nextToken());
+        StringTokenizer st;
 
-			int[] time = new int[] { startTime, lastTime };
+        for (int i = 0; i < meetingList.length; i++) {
+            st = new StringTokenizer(br.readLine());
+            int startTime = Integer.parseInt(st.nextToken());
+            int lastTime = Integer.parseInt(st.nextToken());
 
-			meetingList[i] = time;
-		}
-		
-		Arrays.sort(meetingList, new Comparator<int[]>() {
-		    @Override
-			public int compare(int[] o1, int[] o2) {
-		    	return o1[1]-o2[1];
-	           }
-	        });
-		
-//		for (int i = 0; i < meetingList.length; i++) {
-//			System.out.println(Arrays.toString(meetingList[i]));
-//		}
+            int[] time = new int[] { startTime, lastTime };
 
-		int count = 1;
-		int searchedIndex = 0;
+            meetingList[i] = time;
+        }
 
-		int minEndTime = meetingList[0][1];
+        Arrays.sort(meetingList, new Comparator<int[]>() {
+            public int compare(int[] o1, int[] o2) {
+                return o1[1] != o2[1] ? o1[1] - o2[1] : o1[0] - o2[0]; // 첫번째 기준 오름차순 > 두번째 기준 오름차순 :
+                                                                        // {1,30}{2,10}{3,50}{4,20}{5,40}{6,10}{6,20}{6,30}{6,40}{6,50}
+            }
+        });
 
-		loop: while (true) {
-			boolean search = false;
-			int currentMinEndTime = meetingList[N-1][1]+1;
+        int count = 0;
 
-			for (int i = searchedIndex; i < meetingList.length; i++) {
-				int startTime = meetingList[i][0];
-				int endTime = meetingList[i][1];
+        int minEndTime = 0;
+        
+        for (int i = 0; i < meetingList.length; i++) {
+            int startTime = meetingList[i][0];
+            int endTime = meetingList[i][1];
 
-				// 이전에 회의가 끝났던 시간 이후 가장 먼저 끝나는 회의 찾기
-				if (startTime >= minEndTime) {
-					currentMinEndTime = Math.min(currentMinEndTime, endTime);
-					//이전에 찾았던 애들은 다시 찾지 않음
-					searchedIndex = i;
-					search=true;
-					break;
-				}
-			}
+            // 이전에 회의가 끝났던 시간 이후 가장 먼저 끝나는 회의 찾기
+            if (startTime >= minEndTime) {
+                minEndTime = endTime;
+                count++;
+            }
+        }
 
-			if (!search) {
-				break loop;
-			} else {
-				minEndTime = currentMinEndTime;
-				count++;
-			}
-
-		}
-		System.out.println(count);
-	}
+        System.out.println(count);
+    }
 }
