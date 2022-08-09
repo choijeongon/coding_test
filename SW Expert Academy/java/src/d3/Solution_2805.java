@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
-public class swea_2805 {
+public class Solution_2805 {
 	static char[][] parm;
 	static int center;
 	static int sum;

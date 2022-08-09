@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Stack;
 
-public class swea_1218 {
+public class Solution_1218 {
 	static char op(char ch) {
 		switch (ch) {
 		case '(':

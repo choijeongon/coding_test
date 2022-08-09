@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
-public class swea_11315 {
+public class Solution_11315 {
 	final static String Y = "YES";
 	final static String NO = "NO";
 	

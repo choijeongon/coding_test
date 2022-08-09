@@ -2,7 +2,7 @@ package d3;
 
 import java.util.Scanner;
 
-public class swea_1208 {
+public class Solution_1208 {
 	
 	static int max; 
 	static int min;

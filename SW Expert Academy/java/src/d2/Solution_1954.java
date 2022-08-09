@@ -3,7 +3,7 @@ package d2;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class swea_1954 {
+public class Solution_1954 {
     public static void main(String[] args) {
     	int[] direct_x = { 0, 1, 0, -1 };
     	int[] direct_y = { 1, 0, -1, 0 };
