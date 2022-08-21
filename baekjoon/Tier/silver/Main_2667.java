@@ -6,7 +6,9 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class Main_2667 {
 	static int[] dx = { -1, 0, +1, 0 }; // up, right, down, left
@@ -46,11 +48,18 @@ public class Main_2667 {
 		// 완탐
 		for (int i = 0; i < N; i++) {
 			for (int j = 0; j < N; j++) {
-					if (dfs(i, j)) {
-						count++;
-						houseCountList.add(max);
-						max = 0;
-					}
+				if (board[i][j] == 1) {
+					bfs(i, j);
+					count++;
+					houseCountList.add(max);
+					max = 0;
+				}
+				
+//					if (dfs(i, j)) {
+//						count++;
+//						houseCountList.add(max);
+//						max = 0;
+//					}
 
 			}
 		}
@@ -62,6 +71,38 @@ public class Main_2667 {
 		}
 
 //        print();
+	}
+	
+	static void bfs(int x, int y) {
+		Queue<Position> queue = new LinkedList<>();
+		
+		//첫 번째 값 넣기
+		queue.offer(new Position(x, y));
+		//방문 처리
+		board[x][y]=0;
+		max++;
+		
+		while(!queue.isEmpty()) {
+			Position currentPosition = queue.poll();
+			
+			for (int direct = 0; direct < 4; direct++) {
+				int nextX = currentPosition.x + dx[direct];
+				int nextY = currentPosition.y + dy[direct];
+				
+				if(nextX < 0 || nextY < 0 || nextX >= N || nextY >= N || board[nextX][nextY] ==0) {
+					continue;
+				}
+				
+				if(board[nextX][nextY] == 1) {
+					max++;
+					queue.offer(new Position(nextX, nextY));
+					//방문 처리
+					board[nextX][nextY]=0;
+					
+				}
+			}
+			
+		}
 	}
 
 	static boolean dfs(int x, int y) {
@@ -90,6 +131,20 @@ public class Main_2667 {
 		}
 
 		return false;
+	}
+	
+	static class Position{
+		int x;
+		int y;
+		public Position(int x, int y) {
+			this.x = x;
+			this.y = y;
+		}
+		
+		@Override
+		public String toString() {
+			return "Position [x=" + x + ", y=" + y + "]";
+		}
 	}
 
 	static void print() {
