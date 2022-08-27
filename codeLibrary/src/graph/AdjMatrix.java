@@ -43,7 +43,7 @@ public class AdjMatrix {
 		
 		while(!queue.isEmpty()) {
 			int current = queue.poll();
-			System.out.println((char)(current+'A'));
+			System.out.print((char)(current+'A'));
 			
 			//현 정점의 인접정점들을 큐에 넣어서 차후 탐색하도록 만들기
 			for (int i = 0; i < N; i++) {
@@ -52,9 +52,7 @@ public class AdjMatrix {
 					queue.offer(i);
 				}
 			}
-			System.out.println();
-			
 		}
-		
+		System.out.println();
 	}
 }
