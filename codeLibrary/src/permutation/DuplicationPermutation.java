@@ -3,15 +3,14 @@ package permutation;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Permutation {
-	
+public class DuplicationPermutation {
+
 	static int N;
 	static int R;
 	static int totalCount;
 	
 	static int[] inputList;
 	static int[] numbers;
-	static boolean[] isSelected;
 	
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
@@ -21,7 +20,6 @@ public class Permutation {
 		totalCount = 0;
 		
 		inputList = new int[N];
-		isSelected = new boolean[N];
 		numbers = new int[R];
 		
 		for (int i = 0; i < N; i++) {
@@ -41,14 +39,9 @@ public class Permutation {
 		}
 		
 		for (int i = 0; i < N; i++) {
-			if(isSelected[i]) {
-				continue;
-			}
-			
 			numbers[count] = inputList[i];
-			isSelected[i] = true;
 			perm(count +1);
-			isSelected[i] = false;
 		}
 	}
+
 }
