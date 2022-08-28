@@ -8,6 +8,8 @@ public class AdjMatrix {
 	
 	//가중치가 없으면 boolean형이어도 상관 없음
 	static int[][] adjMatrix;
+	static boolean[] visited;
+	
 	//노드의 수
 	static int N;
 	//간선의 수
@@ -20,6 +22,7 @@ public class AdjMatrix {
 		E = sc.nextInt();
 		
 		adjMatrix = new int[N][N]; //0으로 자동 초기화
+		visited = new boolean[N];
 		
 		for (int i = 0; i < E; i++) { //간선 정보에 해당하는 부분만 덮어씀
 			int from = sc.nextInt();
@@ -31,6 +34,18 @@ public class AdjMatrix {
 		}
 		
 		bfs();
+		dfs(0);
+	}
+	static void dfs(int current) {
+		visited[current] = true;
+		System.out.print((char)(current+'A'));
+		
+		//현 정점의 인접정점들을 큐에 넣어서 차후 탐색하도록 만들기
+		for (int i = 0; i < N; i++) {
+			if(!visited[i] && adjMatrix[current][i] != 0) { //방문하지 않았으며 인접한 경우
+				dfs(i);
+			}
+		}
 	}
 	
 	static void bfs() {
