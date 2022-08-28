@@ -3,7 +3,7 @@ package combination;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Combination {
+public class DuplicationCombination {
 	//뽑힐 대상들의 갯수
 	static int N;
 	
@@ -47,7 +47,7 @@ public class Combination {
 		
 		for (int i = start; i < N; i++) {
 			numbers[count] = inputList[i];
-			comb(count+1, i+1);
+			comb(count+1, i);
 		}
 	}
 }
