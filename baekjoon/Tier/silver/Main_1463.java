@@ -1,79 +1,36 @@
 package silver;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main_1463 {
-	static int N;
-	
-	static int min;
+	static int X, ans;
 	
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		
-		N = sc.nextInt();
+		X = sc.nextInt();
+		ans = Integer.MAX_VALUE;
 		
-		min = Integer.MAX_VALUE;
+		dp();
 		
-//		dfs(N, 0);
-		bfs();
-		
-		System.out.println(min);
-	}
-
-	static void dfs(int value, int count) {
-		if(value == 1) {
-			min = Math.min(min, count);
-			return;
-		}
-		
-		if(value < 1) {
-			return;
-		}
-		
-		if(value % 3 == 0) {
-			dfs(value / 3, count+1);
-		}
-		if(value %2 ==0) {
-			dfs(value/2, count+1);
-		}
-		
-		dfs(value-1, count+1);
+		System.out.println(ans);
 	}
 	
-	static void bfs() {
-		Queue<Point> queue = new LinkedList<>();
+	static void dp() {
+		int[] memo = new int[X+1];
 		
-		queue.add(new Point(N, 0));
-		
-		while(!queue.isEmpty()) {
-			Point x = queue.poll();
-			
-			if(x.value == 1) {
-				min = Math.min(min, x.count);
-				return;
+		for (int i = 2; i <= X; i++) {
+			memo[i] = memo[i-1]+1; // 현재 i보다 하나 작은 숫자부터 +1연산 한번 수행하면 지금 숫자 만들어짐
+			if(i%3==0) {
+				memo[i] = Math.min(memo[i], memo[i/3]+1);
 			}
-			
-			if(x.value %3 == 0) {
-				queue.add(new Point(x.value/3, x.count+1));
+			if(i%2==0) {
+				memo[i] = Math.min(memo[i], memo[i/2]+1);
 			}
-			if(x.value %2 == 0) {
-				queue.add(new Point(x.value/2, x.count+1));
-			}
-			
-			queue.add(new Point(x.value-1, x.count+1));
+//			System.out.println(i + ":" + Arrays.toString(memo));
 		}
-	}
-	
-	static class Point{
-		int value;
-		int count;
 		
-		public Point(int value, int count) {
-			this.value = value;
-			this.count = count;
-		}
+		ans = memo[X];
 	}
-	
 }
